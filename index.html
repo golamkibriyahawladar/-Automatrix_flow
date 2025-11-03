@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Automatrix — n8n Automations</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- AOS Animate on Scroll -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+  <style>
+    body {
+      scroll-behavior: smooth;
+    }
+
+    body.modal-open {
+      overflow: hidden;
+    }
+
+    .bubble-you {
+      background: rgba(79, 70, 229, .9);
+      color: white;
+      padding: .4rem .7rem;
+      border-radius: 999px;
+      display: inline-block;
+    }
+
+    .bubble-bot {
+      background: rgba(255, 255, 255, .08);
+      color: #e5e7eb;
+      padding: .4rem .7rem;
+      border-radius: 12px;
+      display: inline-block;
+    }
+  </style>
+</head>
+
+<body class="bg-gradient-to-b from-gray-900 via-gray-800 to-black text-white antialiased">
+
+  <!-- Sticky full-width header -->
+  <header class="sticky top-0 z-50 bg-gray-900/70 backdrop-blur border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-24 flex flex-col sm:flex-row items-center justify-between py-6">
+      <div class="flex items-center gap-4">
+        <div
+          class="w-12 h-12 rounded-xl bg-gradient-to-br from-indigo-500 to-pink-500 flex items-center justify-center font-bold text-lg">
+          A</div>
+        <div>
+          <h1 class="text-2xl sm:text-3xl font-bold">Automatrix</h1>
+          <p class="text-gray-300 text-sm sm:text-base">Automate your business with Automatrix</p>
+        </div>
+      </div>
+      <nav class="mt-4 sm:mt-0 flex gap-6 text-gray-200 text-sm sm:text-base">
+        <a href="#projects" class="hover:underline">Projects</a>
+        <a href="#tools" class="hover:underline">Tools</a>
+        <a href="#contact" class="hover:underline">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-24">
+    <!-- Hero -->
+    <section class="grid md:grid-cols-2 gap-8 items-center py-12">
+      <div data-aos="fade-right">
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight">Automate the repetitive. Scale the
+          impact.</h2>
+        <p class="mt-4 text-gray-300 text-sm sm:text-base md:text-lg">Automatrix builds no-code / low-code automations
+          using n8n — chatbots, email flows, analytics, and integrations that solve business problems.</p>
+        <div class="mt-6 flex flex-wrap gap-4">
+          <a href="#contact" class="bg-indigo-500 hover:bg-indigo-600 px-5 py-3 rounded-lg font-medium transition">Hire
+            me</a>
+          <a href="#projects" class="border border-gray-600 px-5 py-3 rounded-lg hover:border-indigo-500 transition">See
+            projects</a>
+        </div>
+        <div class="mt-4 text-gray-400 text-xs sm:text-sm">Demo site — replace demo projects and YouTube links with your
+          own when ready.</div>
+      </div>
+
+      <div data-aos="fade-left">
+        <div class="bg-gradient-to-tr from-white/5 to-white/3 p-6 rounded-2xl shadow-2xl">
+          <div class="mb-4 text-sm text-gray-300">Live Demos</div>
+          <div id="demo-list" class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <!-- Filled by JS -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="py-12">
+      <h3 class="text-3xl font-bold" data-aos="fade-up">Featured Projects</h3>
+      <p class="text-gray-300 mt-2" data-aos="fade-up" data-aos-delay="80">Click a project to view details, demo and a
+        walkthrough video.</p>
+
+      <div id="projects-grid" class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <!-- Filled by JS -->
+      </div>
+    </section>
+
+    <!-- Tools -->
+    <section id="tools" class="py-12" data-aos="fade-up">
+      <h3 class="text-2xl font-bold">Tools I use</h3>
+      <div class="mt-6 flex flex-wrap gap-3">
+        <span class="px-3 py-2 bg-white/5 rounded-md text-sm sm:text-base">n8n</span>
+        <span class="px-3 py-2 bg-white/5 rounded-md text-sm sm:text-base">Netlify</span>
+        <span class="px-3 py-2 bg-white/5 rounded-md text-sm sm:text-base">Google Drive</span>
+        <span class="px-3 py-2 bg-white/5 rounded-md text-sm sm:text-base">Gmail / SMTP</span>
+        <span class="px-3 py-2 bg-white/5 rounded-md text-sm sm:text-base">Slack</span>
+        <span class="px-3 py-2 bg-white/5 rounded-md text-sm sm:text-base">Airtable / Google Sheets</span>
+        <span class="px-3 py-2 bg-white/5 rounded-md text-sm sm:text-base">Webhook / REST</span>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="py-12 max-w-2xl" data-aos="fade-up">
+      <h3 class="text-2xl font-bold">Contact / Hire me</h3>
+      <p class="text-gray-300 mt-2 text-sm sm:text-base">Fill the form and I’ll get back to you. Connect to a Netlify
+        function or n8n webhook to send emails.</p>
+
+      <form name="contact" method="POST" data-netlify="true" class="mt-6 grid gap-4 bg-white/5 p-6 rounded-lg">
+        <input type="hidden" name="form-name" value="contact" />
+        <label class="flex flex-col text-sm sm:text-base">
+          <span class="text-gray-300">Your name</span>
+          <input name="name" required class="mt-1 p-3 rounded bg-white/5 text-white" />
+        </label>
+        <label class="flex flex-col text-sm sm:text-base">
+          <span class="text-gray-300">Email</span>
+          <input name="email" type="email" required class="mt-1 p-3 rounded bg-white/5 text-white" />
+        </label>
+        <label class="flex flex-col text-sm sm:text-base">
+          <span class="text-gray-300">Message / Project brief</span>
+          <textarea name="message" rows="4" required class="mt-1 p-3 rounded bg-white/5 text-white"></textarea>
+        </label>
+        <button type="submit" class="w-max bg-indigo-500 px-5 py-3 rounded-lg transition">Send message</button>
+        <div class="text-sm text-gray-400 mt-2">Tip: connect the form to your n8n webhook for automation.</div>
+      </form>
+    </section>
+
+    <footer class="py-8 text-center text-sm text-gray-500">© <span id="year"></span> Automatrix • Built for n8n</footer>
+  </div>
+
+  <!-- Modal -->
+  <div id="modal" class="fixed inset-0 z-50 hidden items-center justify-center">
+    <div id="modal-backdrop" class="absolute inset-0 bg-black/60"></div>
+    <div class="relative z-10 max-w-3xl w-full p-6 bg-gray-900 rounded-2xl mx-4">
+      <button id="modal-close" class="absolute top-4 right-4 text-gray-400">✕</button>
+      <div id="modal-content" class="space-y-4"></div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    AOS.init({ duration: 700, mirror: true });
+
+    const projects = [
+      { id: 1, title: "Image Generator", short: "Generate images from text prompts.", useCase: "AI-assisted creative content.", video: "https://www.youtube.com/embed/dQw4w9WgXcQ", demoType: "image" },
+      { id: 2, title: "Smart Chatbot", short: "Conversational assistant built with n8n flows.", useCase: "Customer support automation.", video: "https://www.youtube.com/embed/dQw4w9WgXcQ", demoType: "chat" },
+      { id: 3, title: "Email Automation", short: "Send templated emails automatically.", useCase: "Lead nurturing and transactional emails.", video: "https://www.youtube.com/embed/dQw4w9WgXcQ", demoType: "email" },
+      { id: 4, title: "Stock Analytics", short: "Compute SMA and give insights.", useCase: "Portfolio monitoring.", video: "https://www.youtube.com/embed/dQw4w9WgXcQ", demoType: "stock" },
+      { id: 5, title: "CRM Sync", short: "Sync leads to CRM automatically.", useCase: "Keep sales tools updated.", video: "https://www.youtube.com/embed/dQw4w9WgXcQ", demoType: "none" },
+      { id: 6, title: "Invoice Creator", short: "Generate PDFs from order data.", useCase: "Automate billing for freelancers.", video: "https://www.youtube.com/embed/dQw4w9WgXcQ", demoType: "none" },
+      { id: 7, title: "Social Scheduler", short: "Queue posts from spreadsheet.", useCase: "Social media scheduling.", video: "https://www.youtube.com/embed/dQw4w9WgXcQ", demoType: "none" },
+      { id: 8, title: "Daily Summary", short: "Send morning digest via email/Slack.", useCase: "Automate reporting.", video: "https://www.youtube.com/embed/dQw4w9WgXcQ", demoType: "none" },
+      { id: 9, title: "File Watcher", short: "Trigger workflows on new files.", useCase: "Automate file processing.", video: "https://www.youtube.com/embed/dQw4w9WgXcQ", demoType: "none" },
+      { id: 10, title: "Feedback Collector", short: "Turn user feedback into tasks.", useCase: "Streamline feedback management.", video: "https://www.youtube.com/embed/dQw4w9WgXcQ", demoType: "none" }
+    ];
+
+    // Fill demo list
+    const demoList = document.getElementById('demo-list');
+    projects.slice(0, 4).forEach(p => {
+      const el = document.createElement('div');
+      el.className = 'p-3 bg-white/3 rounded-lg flex items-center justify-between';
+      el.innerHTML = `<div><div class="font-medium">${p.title}</div><div class="text-xs text-gray-300">${p.short}</div></div>
+                  <button class="ml-4 px-3 py-2 bg-indigo-600 rounded demo-open-btn" data-id="${p.id}">Open</button>`;
+      demoList.appendChild(el);
+    });
+
+    // Fill projects grid
+    const grid = document.getElementById('projects-grid');
+    projects.forEach(p => {
+      const card = document.createElement('div');
+      card.className = 'bg-white/5 p-6 rounded-xl cursor-pointer hover:bg-white/10 transition';
+      card.setAttribute('data-aos', 'fade-up');
+      card.innerHTML = `<h4 class="font-semibold text-lg">${p.title}</h4>
+                    <p class="text-gray-300 mt-2 text-sm">${p.short}</p>
+                    <div class="mt-4 text-xs text-gray-400">Use case: ${p.useCase}</div>
+                    <div class="mt-4 text-sm text-indigo-300">View demo ▸</div>`;
+      card.addEventListener('click', () => openModal(p));
+      grid.appendChild(card);
+    });
+
+    // Modal
+    const modal = document.getElementById('modal');
+    const modalContent = document.getElementById('modal-content');
+    const closeBtn = document.getElementById('modal-close');
+
+    function openModal(project) {
+      modalContent.innerHTML = `
+    <h3 class="text-2xl font-bold">${project.title}</h3>
+    <p class="text-gray-300">${project.short}</p>
+    <div class="text-sm text-gray-400">Use case: ${project.useCase}</div>
+    <div class="mt-4" id="demo-area"></div>
+    <div class="mt-6">
+      <div class="text-sm text-gray-300 mb-2">Walkthrough video</div>
+      <div class="aspect-video bg-black rounded-lg overflow-hidden">
+        <iframe class="w-full h-full" src="${project.video}" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </div>
+    <div class="mt-4 flex gap-3">
+      <a href="#contact" class="bg-indigo-500 px-4 py-2 rounded">Hire for this</a>
+      <button id="modal-close-2" class="px-4 py-2 border rounded">Close</button>
+    </div>`;
+      modal.classList.remove('hidden'); document.body.classList.add('modal-open');
+
+      const demoArea = document.getElementById('demo-area');
+      if (project.demoType === 'chat') demoArea.appendChild(createChatDemo());
+      else if (project.demoType === 'email') demoArea.appendChild(createEmailDemo());
+      else if (project.demoType === 'stock') demoArea.appendChild(createStockDemo());
+      else if (project.demoType === 'image') demoArea.appendChild(createImageDemo());
+      else demoArea.innerHTML = '<div class="text-sm text-gray-400">No interactive demo for this project.</div>';
+
+      document.getElementById('modal-close-2').addEventListener('click', closeModal);
+    }
+
+    function closeModal() { modal.classList.add('hidden'); document.body.classList.remove('modal-open'); modalContent.innerHTML = ''; }
+    closeBtn.addEventListener('click', closeModal);
+    document.getElementById('modal-backdrop').addEventListener('click', closeModal);
+
+    // Demo widgets
+    function createChatDemo() {
+      const container = document.createElement('div');
+      container.className = 'bg-white/5 p-4 rounded';
+      container.innerHTML = `<div id="chat-window" class="h-48 overflow-auto mb-3 p-2 bg-black/20 rounded"></div>
+    <div class="flex gap-2">
+      <input id="chat-input" class="flex-1 p-2 rounded bg-white/5" placeholder="Type a message..." />
+      <button id="chat-send" class="px-4 py-2 bg-indigo-500 rounded">Send</button>
+    </div>`;
+      const win = container.querySelector('#chat-window');
+      const input = container.querySelector('#chat-input');
+      container.querySelector('#chat-send').addEventListener('click', () => {
+        const text = input.value.trim(); if (!text) return;
+        appendMsg(win, 'you', text); input.value = '';
+        setTimeout(() => appendMsg(win, 'bot', `Demo n8n bot reply: I heard "${text}".`), 700);
+      });
+      appendMsg(win, 'bot', "Hi — try asking: 'How do I reset password?'");
+      return container;
+    }
+    function appendMsg(win, who, text) {
+      const div = document.createElement('div'); div.className = 'mb-2';
+      div.innerHTML = `<span class="${who === 'you' ? 'bubble-you' : 'bubble-bot'}">${text}</span>`;
+      if (who === 'you') div.style.textAlign = 'right';
+      win.appendChild(div); win.scrollTop = win.scrollHeight;
+    }
+
+    function createEmailDemo() {
+      const container = document.createElement('div');
+      container.className = 'bg-white/5 p-4 rounded';
+      container.innerHTML = `<form id="email-demo" class="grid gap-2">
+    <input name="email" value="test@example.com" class="p-2 rounded bg-white/5" />
+    <input name="subject" value="Hi" class="p-2 rounded bg-white/5" />
+    <textarea name="body" rows="3" class="p-2 rounded bg-white/5">Hello from demo</textarea>
+    <div class="flex items-center gap-3">
+      <button type="submit" class="px-4 py-2 bg-indigo-500 rounded">Send (simulate)</button>
+      <div id="email-status" class="text-sm text-gray-300">Not sent</div>
+    </div></form>`;
+      container.querySelector('#email-demo').addEventListener('submit', e => {
+        e.preventDefault();
+        const status = container.querySelector('#email-status');
+        status.textContent = 'Sending...';
+        setTimeout(() => status.textContent = 'Sent (demo)', 900);
+      });
+      return container;
+    }
+
+    function createStockDemo() {
+      const container = document.createElement('div');
+      container.className = 'bg-white/5 p-4 rounded';
+      container.innerHTML = `<div class="flex gap-2 mb-3">
+    <input id="ticker-input" value="AAPL" class="p-2 rounded bg-white/5" />
+    <button id="analyze-btn" class="px-4 py-2 bg-indigo-500 rounded">Analyze</button>
+  </div>
+  <div id="stock-result" class="text-sm text-gray-300">Enter a ticker and press Analyze.</div>`;
+      container.querySelector('#analyze-btn').addEventListener('click', () => {
+        const t = container.querySelector('#ticker-input').value.toUpperCase() || 'AAPL';
+        const price = (100 + Math.random() * 150).toFixed(2);
+        const sma = (Number(price) - (5 + Math.random() * 8)).toFixed(2);
+        const signal = Number(price) > Number(sma) ? 'Bullish' : 'Bearish';
+        container.querySelector('#stock-result').innerHTML = `<div>Price: <strong>${price}</strong></div><div>5-day SMA: <strong>${sma}</strong></div><div>Signal: <strong>${signal}</strong></div>`;
+      });
+      return container;
+    }
+
+    function createImageDemo() {
+      const container = document.createElement('div');
+      container.className = 'bg-white/5 p-4 rounded';
+      container.innerHTML = `<div class="flex gap-2 mb-3">
+    <input id="img-prompt" class="flex-1 p-2 rounded bg-white/5" placeholder="Describe the image you want..." />
+    <button id="img-gen-btn" class="px-4 py-2 bg-indigo-500 rounded">Generate</button>
+  </div>
+  <div id="img-status" class="text-sm text-gray-300 mb-2">Enter a prompt and press Generate.</div>
+  <div id="img-scroll" class="w-full bg-black/20 rounded border border-white/10 overflow-auto h-80 sm:h-96 md:h-[28rem]">
+    <img id="img-result" alt="Generated image" class="hidden block mx-auto" style="max-width:100%; height:auto;" />
+  </div>`;
+
+      // Webhook is scoped only to the image generator demo
+      const WEBHOOK_URL = 'https://1100-346.n8n1.deltadns.xyz/webhook/90a27403-7dd6-4b6a-a72e-a0314eb9d4ee';
+
+      const promptEl = container.querySelector('#img-prompt');
+      const statusEl = container.querySelector('#img-status');
+      const imgEl = container.querySelector('#img-result');
+      const scrollEl = container.querySelector('#img-scroll');
+      const btn = container.querySelector('#img-gen-btn');
+
+      btn.addEventListener('click', async () => {
+        const prompt = (promptEl.value || '').trim();
+        if (!prompt) { statusEl.textContent = 'Please enter a prompt.'; return; }
+        statusEl.textContent = 'Generating image...';
+        imgEl.classList.add('hidden');
+
+        // Cleanup previous blob URL if any
+        if (imgEl.src && imgEl.src.startsWith('blob:')) {
+          try { URL.revokeObjectURL(imgEl.src); } catch { }
+        }
+
+        btn.disabled = true; btn.classList.add('opacity-60', 'cursor-not-allowed');
+
+        try {
+          const controller = new AbortController();
+          const timeout = setTimeout(() => controller.abort(), 60000);
+
+          const res = await fetch(WEBHOOK_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ prompt, seed: Date.now() }),
+            signal: controller.signal
+          });
+          clearTimeout(timeout);
+
+          if (!res.ok) throw new Error('Non-200 from webhook');
+
+          const ct = (res.headers.get('content-type') || '').toLowerCase();
+          let finalUrl = null;
+
+          if (ct.startsWith('image/')) {
+            // Direct image stream
+            const blob = await res.blob();
+            finalUrl = URL.createObjectURL(blob);
+          } else if (ct.includes('application/json')) {
+            // JSON response - try common fields
+            const data = await res.json();
+            const b64 = data.base64 || data.image_base64 || data.b64_json || null;
+            if (b64) {
+              finalUrl = `data:image/png;base64,${b64}`;
+            } else {
+              finalUrl =
+                data.image_url ||
+                data.url ||
+                (Array.isArray(data.data) && data.data[0] && (data.data[0].url || data.data[0].image_url)) ||
+                null;
+            }
+          } else {
+            // Fallback: text body containing a URL
+            const text = await res.text();
+            const match = text.match(/https?:\/\/\S+\.(?:png|jpg|jpeg|webp|gif)/i);
+            if (match) finalUrl = match[0];
+          }
+
+          if (!finalUrl) throw new Error('No image URL or data in webhook response');
+
+          imgEl.src = finalUrl;
+          imgEl.onload = () => {
+            statusEl.textContent = 'Done. Scroll if the image is large.';
+            imgEl.classList.remove('hidden');
+            if (scrollEl) { scrollEl.scrollTop = 0; scrollEl.scrollLeft = 0; }
+          };
+          imgEl.onerror = () => { statusEl.textContent = 'Failed to display image.'; };
+        } catch {
+          statusEl.textContent = 'Failed to generate. Please try again.';
+        } finally {
+          btn.disabled = false; btn.classList.remove('opacity-60', 'cursor-not-allowed');
+        }
+      });
+
+      return container;
+    }
+
+    // Delegate demo-open buttons
+    document.addEventListener('click', (e) => {
+      const btn = e.target.closest('.demo-open-btn');
+      if (btn) { const id = Number(btn.dataset.id); const p = projects.find(x => x.id === id); if (p) openModal(p); }
+    });
+  </script>
+</body>
+
+</html>
