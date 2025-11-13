@@ -5,14 +5,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Automatrix — n8n Automations</title>
-
-  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- AOS Animate on Scroll -->
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-
   <style>
     body {
       scroll-behavior: smooth;
@@ -24,7 +19,7 @@
 
     .bubble-you {
       background: rgba(79, 70, 229, .9);
-      color: white;
+      color: #fff;
       padding: .4rem .7rem;
       border-radius: 999px;
       display: inline-block;
@@ -37,12 +32,118 @@
       border-radius: 12px;
       display: inline-block;
     }
+
+    #modal .bubble-bot {
+      background: rgba(0, 0, 0, .08);
+      color: #111827;
+    }
+
+    .projects-section {
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
+    .projects-section h2 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      color: #c9d1d9;
+    }
+
+    .projects-container {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .project-card {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 12px;
+      overflow: hidden;
+      transition: .3s;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      border-color: #58a6ff;
+    }
+
+    .project-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .project-info {
+      padding: 1rem;
+    }
+
+    .project-info h3 {
+      color: #58a6ff;
+      margin-bottom: .5rem;
+    }
+
+    .project-info p {
+      font-size: .9rem;
+      color: #8b949e;
+      margin-bottom: 1rem;
+    }
+
+    .view-btn {
+      display: inline-block;
+      background: #58a6ff;
+      color: #fff;
+      padding: .5rem 1rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: .9rem;
+      transition: .3s;
+    }
+
+    .view-btn:hover {
+      background: #1f6feb;
+    }
+
+    .video-popup {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, .8);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .video-content {
+      position: relative;
+      width: 90%;
+      max-width: 800px;
+      background: #000;
+      border-radius: 10px;
+    }
+
+    .video-content iframe {
+      width: 100%;
+      height: 450px;
+      border-radius: 10px;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      font-size: 2rem;
+      color: #fff;
+      cursor: pointer;
+    }
   </style>
 </head>
 
 <body class="bg-gradient-to-b from-gray-900 via-gray-800 to-black text-white antialiased">
-
-  <!-- Sticky full-width header -->
   <header class="sticky top-0 z-50 bg-gray-900/70 backdrop-blur border-b border-white/10">
     <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-24 flex flex-col sm:flex-row items-center justify-between py-6">
       <div class="flex items-center gap-4">
@@ -50,8 +151,8 @@
           class="w-12 h-12 rounded-xl bg-gradient-to-br from-indigo-500 to-pink-500 flex items-center justify-center font-bold text-lg">
           A</div>
         <div>
-          <h1 class="text-2xl sm:text-3xl font-bold">Automatrix</h1>
-          <p class="text-gray-300 text-sm sm:text-base">Automate your business with Automatrix</p>
+          <h1 class="text-2xl sm:text-3xl font-bold">Golam_Kibriya</h1>
+          <p class="text-gray-300 text-sm sm:text-base">Automate your business with Golam_kibriya</p>
         </div>
       </div>
       <nav class="mt-4 sm:mt-0 flex gap-6 text-gray-200 text-sm sm:text-base">
@@ -61,9 +162,7 @@
       </nav>
     </div>
   </header>
-
   <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-24">
-    <!-- Hero -->
     <section class="grid md:grid-cols-2 gap-8 items-center py-12">
       <div data-aos="fade-right">
         <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight">Automate the repetitive. Scale the
@@ -79,29 +178,23 @@
         <div class="mt-4 text-gray-400 text-xs sm:text-sm">Demo site — replace demo projects and YouTube links with your
           own when ready.</div>
       </div>
-
       <div data-aos="fade-left">
         <div class="bg-gradient-to-tr from-white/5 to-white/3 p-6 rounded-2xl shadow-2xl">
           <div class="mb-4 text-sm text-gray-300">Live Demos</div>
-          <div id="demo-list" class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            <!-- Filled by JS -->
-          </div>
+          <div id="demo-list" class="grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
         </div>
       </div>
     </section>
-
-    <!-- Projects -->
-    <section id="projects" class="py-12">
-      <h3 class="text-3xl font-bold" data-aos="fade-up">Featured Projects</h3>
-      <p class="text-gray-300 mt-2" data-aos="fade-up" data-aos-delay="80">Click a project to view details, demo and a
-        walkthrough video.</p>
-
-      <div id="projects-grid" class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        <!-- Filled by JS -->
+    <main class="projects-section">
+      <h2>Projects</h2>
+      <div class="projects-container" id="projects"></div>
+    </main>
+    <div class="video-popup" id="videoPopup">
+      <div class="video-content">
+        <span class="close-btn" id="closeBtn">&times;</span>
+        <iframe id="videoFrame" src="" frameborder="0" allowfullscreen></iframe>
       </div>
-    </section>
-
-    <!-- Tools -->
+    </div>
     <section id="tools" class="py-12" data-aos="fade-up">
       <h3 class="text-2xl font-bold">Tools I use</h3>
       <div class="mt-6 flex flex-wrap gap-3">
@@ -114,13 +207,10 @@
         <span class="px-3 py-2 bg-white/5 rounded-md text-sm sm:text-base">Webhook / REST</span>
       </div>
     </section>
-
-    <!-- Contact -->
     <section id="contact" class="py-12 max-w-2xl" data-aos="fade-up">
       <h3 class="text-2xl font-bold">Contact / Hire me</h3>
       <p class="text-gray-300 mt-2 text-sm sm:text-base">Fill the form and I’ll get back to you. Connect to a Netlify
         function or n8n webhook to send emails.</p>
-
       <form name="contact" method="POST" data-netlify="true" class="mt-6 grid gap-4 bg-white/5 p-6 rounded-lg">
         <input type="hidden" name="form-name" value="contact" />
         <label class="flex flex-col text-sm sm:text-base">
@@ -139,82 +229,55 @@
         <div class="text-sm text-gray-400 mt-2">Tip: connect the form to your n8n webhook for automation.</div>
       </form>
     </section>
-
     <footer class="py-8 text-center text-sm text-gray-500">© <span id="year"></span> Automatrix • Built for n8n</footer>
   </div>
-
-  <!-- Modal -->
   <div id="modal" class="fixed inset-0 z-50 hidden items-center justify-center">
     <div id="modal-backdrop" class="absolute inset-0 bg-black/60"></div>
-    <div class="relative z-10 max-w-3xl w-full p-6 bg-gray-900 rounded-2xl mx-4">
-      <button id="modal-close" class="absolute top-4 right-4 text-gray-400">✕</button>
+    <div class="relative z-10 max-w-3xl w-full p-6 bg-purple-100 text-gray-900 rounded-2xl mx-4">
+      <button id="modal-close" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700">✕</button>
       <div id="modal-content" class="space-y-4"></div>
     </div>
   </div>
-
-  <!-- Scripts -->
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
     AOS.init({ duration: 700, mirror: true });
 
     const projects = [
-      { id: 1, title: "Image Generator", short: "Generate images from text prompts.", useCase: "AI-assisted creative content.", video: "https://www.youtube.com/embed/dQw4w9WgXcQ", demoType: "image" },
+      { id: 1, title: "Image Generator", short: "Generate images from text prompts.", useCase: "AI-assisted creative content.", video: "https://youtu.be/clsjaAWVDgE?si=wQ2cVIJ8_v0C3GOo", demoType: "image" },
       { id: 2, title: "Smart Chatbot", short: "Conversational assistant built with n8n flows.", useCase: "Customer support automation.", video: "https://www.youtube.com/embed/dQw4w9WgXcQ", demoType: "chat" },
       { id: 3, title: "Email Automation", short: "Send templated emails automatically.", useCase: "Lead nurturing and transactional emails.", video: "https://www.youtube.com/embed/dQw4w9WgXcQ", demoType: "email" },
-      { id: 4, title: "Stock Analytics", short: "Compute SMA and give insights.", useCase: "Portfolio monitoring.", video: "https://www.youtube.com/embed/dQw4w9WgXcQ", demoType: "stock" },
-      { id: 5, title: "CRM Sync", short: "Sync leads to CRM automatically.", useCase: "Keep sales tools updated.", video: "https://www.youtube.com/embed/dQw4w9WgXcQ", demoType: "none" },
-      { id: 6, title: "Invoice Creator", short: "Generate PDFs from order data.", useCase: "Automate billing for freelancers.", video: "https://www.youtube.com/embed/dQw4w9WgXcQ", demoType: "none" },
-      { id: 7, title: "Social Scheduler", short: "Queue posts from spreadsheet.", useCase: "Social media scheduling.", video: "https://www.youtube.com/embed/dQw4w9WgXcQ", demoType: "none" },
-      { id: 8, title: "Daily Summary", short: "Send morning digest via email/Slack.", useCase: "Automate reporting.", video: "https://www.youtube.com/embed/dQw4w9WgXcQ", demoType: "none" },
-      { id: 9, title: "File Watcher", short: "Trigger workflows on new files.", useCase: "Automate file processing.", video: "https://www.youtube.com/embed/dQw4w9WgXcQ", demoType: "none" },
-      { id: 10, title: "Feedback Collector", short: "Turn user feedback into tasks.", useCase: "Streamline feedback management.", video: "https://www.youtube.com/embed/dQw4w9WgXcQ", demoType: "none" }
+      { id: 4, title: "Stock Analytics", short: "Compute SMA and give insights.", useCase: "Portfolio monitoring.", video: "https://www.youtube.com/embed/dQw4w9WgXcQ", demoType: "stock" }
     ];
 
-    // Fill demo list
     const demoList = document.getElementById('demo-list');
     projects.slice(0, 4).forEach(p => {
       const el = document.createElement('div');
       el.className = 'p-3 bg-white/3 rounded-lg flex items-center justify-between';
       el.innerHTML = `<div><div class="font-medium">${p.title}</div><div class="text-xs text-gray-300">${p.short}</div></div>
-                  <button class="ml-4 px-3 py-2 bg-indigo-600 rounded demo-open-btn" data-id="${p.id}">Open</button>`;
+      <button class="ml-4 px-3 py-2 bg-indigo-600 rounded demo-open-btn" data-id="${p.id}">Open</button>`;
       demoList.appendChild(el);
     });
 
-    // Fill projects grid
-    const grid = document.getElementById('projects-grid');
-    projects.forEach(p => {
-      const card = document.createElement('div');
-      card.className = 'bg-white/5 p-6 rounded-xl cursor-pointer hover:bg-white/10 transition';
-      card.setAttribute('data-aos', 'fade-up');
-      card.innerHTML = `<h4 class="font-semibold text-lg">${p.title}</h4>
-                    <p class="text-gray-300 mt-2 text-sm">${p.short}</p>
-                    <div class="mt-4 text-xs text-gray-400">Use case: ${p.useCase}</div>
-                    <div class="mt-4 text-sm text-indigo-300">View demo ▸</div>`;
-      card.addEventListener('click', () => openModal(p));
-      grid.appendChild(card);
-    });
-
-    // Modal
     const modal = document.getElementById('modal');
     const modalContent = document.getElementById('modal-content');
     const closeBtn = document.getElementById('modal-close');
 
     function openModal(project) {
       modalContent.innerHTML = `
-    <h3 class="text-2xl font-bold">${project.title}</h3>
-    <p class="text-gray-300">${project.short}</p>
-    <div class="text-sm text-gray-400">Use case: ${project.useCase}</div>
-    <div class="mt-4" id="demo-area"></div>
-    <div class="mt-6">
-      <div class="text-sm text-gray-300 mb-2">Walkthrough video</div>
-      <div class="aspect-video bg-black rounded-lg overflow-hidden">
-        <iframe class="w-full h-full" src="${project.video}" frameborder="0" allowfullscreen></iframe>
+      <h3 class="text-2xl font-bold">${project.title}</h3>
+      <p class="text-gray-700">${project.short}</p>
+      <div class="text-sm text-gray-600">Use case: ${project.useCase}</div>
+      <div class="mt-4" id="demo-area"></div>
+      <div class="mt-6">
+        <div class="text-sm text-gray-700 mb-2">Walkthrough video</div>
+        <div class="aspect-video bg-black rounded-lg overflow-hidden">
+          <iframe class="w-full h-full" src="${project.video}" frameborder="0" allowfullscreen></iframe>
+        </div>
       </div>
-    </div>
-    <div class="mt-4 flex gap-3">
-      <a href="#contact" class="bg-indigo-500 px-4 py-2 rounded">Hire for this</a>
-      <button id="modal-close-2" class="px-4 py-2 border rounded">Close</button>
-    </div>`;
+      <div class="mt-4 flex gap-3">
+        <a href="#contact" class="bg-indigo-500 px-4 py-2 rounded text-white">Hire for this</a>
+        <button id="modal-close-2" class="px-4 py-2 border border-gray-300 rounded bg-white/70 text-gray-800">Close</button>
+      </div>`;
       modal.classList.remove('hidden'); document.body.classList.add('modal-open');
 
       const demoArea = document.getElementById('demo-area');
@@ -231,25 +294,23 @@
     closeBtn.addEventListener('click', closeModal);
     document.getElementById('modal-backdrop').addEventListener('click', closeModal);
 
-    // Demo widgets
     function createChatDemo() {
-      const container = document.createElement('div');
-      container.className = 'bg-white/5 p-4 rounded';
-      container.innerHTML = `<div id="chat-window" class="h-48 overflow-auto mb-3 p-2 bg-black/20 rounded"></div>
-    <div class="flex gap-2">
-      <input id="chat-input" class="flex-1 p-2 rounded bg-white/5" placeholder="Type a message..." />
-      <button id="chat-send" class="px-4 py-2 bg-indigo-500 rounded">Send</button>
-    </div>`;
-      const win = container.querySelector('#chat-window');
-      const input = container.querySelector('#chat-input');
-      container.querySelector('#chat-send').addEventListener('click', () => {
+      const c = document.createElement('div');
+      c.className = 'bg-purple-100 text-gray-900 p-4 rounded';
+      c.innerHTML = `<div id="chat-window" class="h-48 overflow-auto mb-3 p-2 bg-purple-200 rounded"></div>
+      <div class="flex gap-2">
+        <input id="chat-input" class="flex-1 p-2 rounded bg-purple-50 text-gray-900" placeholder="Type a message..." />
+        <button id="chat-send" class="px-4 py-2 bg-indigo-500 rounded text-white">Send</button>
+      </div>`;
+      const win = c.querySelector('#chat-window'); const input = c.querySelector('#chat-input');
+      c.querySelector('#chat-send').addEventListener('click', () => {
         const text = input.value.trim(); if (!text) return;
         appendMsg(win, 'you', text); input.value = '';
         setTimeout(() => appendMsg(win, 'bot', `Demo n8n bot reply: I heard "${text}".`), 700);
       });
-      appendMsg(win, 'bot', "Hi — try asking: 'How do I reset password?'");
-      return container;
+      appendMsg(win, 'bot', "Hi — try asking: 'How do I reset password?'"); return c;
     }
+
     function appendMsg(win, who, text) {
       const div = document.createElement('div'); div.className = 'mb-2';
       div.innerHTML = `<span class="${who === 'you' ? 'bubble-you' : 'bubble-bot'}">${text}</span>`;
@@ -258,120 +319,83 @@
     }
 
     function createEmailDemo() {
-      const container = document.createElement('div');
-      container.className = 'bg-white/5 p-4 rounded';
-      container.innerHTML = `<form id="email-demo" class="grid gap-2">
-    <input name="email" value="test@example.com" class="p-2 rounded bg-white/5" />
-    <input name="subject" value="Hi" class="p-2 rounded bg-white/5" />
-    <textarea name="body" rows="3" class="p-2 rounded bg-white/5">Hello from demo</textarea>
-    <div class="flex items-center gap-3">
-      <button type="submit" class="px-4 py-2 bg-indigo-500 rounded">Send (simulate)</button>
-      <div id="email-status" class="text-sm text-gray-300">Not sent</div>
-    </div></form>`;
-      container.querySelector('#email-demo').addEventListener('submit', e => {
+      const c = document.createElement('div'); c.className = 'bg-purple-100 text-gray-900 p-4 rounded';
+      c.innerHTML = `<form id="email-demo" class="grid gap-2">
+      <input name="email" value="test@example.com" class="p-2 rounded bg-purple-50 text-gray-900" />
+      <input name="subject" value="Hi" class="p-2 rounded bg-purple-50 text-gray-900" />
+      <textarea name="body" rows="3" class="p-2 rounded bg-purple-50 text-gray-900">Hello from demo</textarea>
+      <div class="flex items-center gap-3">
+        <button type="submit" class="px-4 py-2 bg-indigo-500 rounded text-white">Send (simulate)</button>
+        <div id="email-status" class="text-sm text-gray-700">Not sent</div>
+      </div></form>`;
+      c.querySelector('#email-demo').addEventListener('submit', e => {
         e.preventDefault();
-        const status = container.querySelector('#email-status');
+        const status = c.querySelector('#email-status');
         status.textContent = 'Sending...';
         setTimeout(() => status.textContent = 'Sent (demo)', 900);
-      });
-      return container;
+      }); return c;
     }
 
     function createStockDemo() {
-      const container = document.createElement('div');
-      container.className = 'bg-white/5 p-4 rounded';
-      container.innerHTML = `<div class="flex gap-2 mb-3">
-    <input id="ticker-input" value="AAPL" class="p-2 rounded bg-white/5" />
-    <button id="analyze-btn" class="px-4 py-2 bg-indigo-500 rounded">Analyze</button>
-  </div>
-  <div id="stock-result" class="text-sm text-gray-300">Enter a ticker and press Analyze.</div>`;
-      container.querySelector('#analyze-btn').addEventListener('click', () => {
-        const t = container.querySelector('#ticker-input').value.toUpperCase() || 'AAPL';
+      const c = document.createElement('div'); c.className = 'bg-purple-100 text-gray-900 p-4 rounded';
+      c.innerHTML = `<div class="flex gap-2 mb-3">
+      <input id="ticker-input" value="AAPL" class="p-2 rounded bg-purple-50 text-gray-900" />
+      <button id="analyze-btn" class="px-4 py-2 bg-indigo-500 rounded text-white">Analyze</button>
+    </div>
+    <div id="stock-result" class="text-sm text-gray-700">Enter a ticker and press Analyze.</div>`;
+      c.querySelector('#analyze-btn').addEventListener('click', () => {
+        const t = c.querySelector('#ticker-input').value.toUpperCase() || 'AAPL';
         const price = (100 + Math.random() * 150).toFixed(2);
         const sma = (Number(price) - (5 + Math.random() * 8)).toFixed(2);
         const signal = Number(price) > Number(sma) ? 'Bullish' : 'Bearish';
-        container.querySelector('#stock-result').innerHTML = `<div>Price: <strong>${price}</strong></div><div>5-day SMA: <strong>${sma}</strong></div><div>Signal: <strong>${signal}</strong></div>`;
-      });
-      return container;
+        c.querySelector('#stock-result').innerHTML = `<div>Price: <strong>${price}</strong></div><div>5-day SMA: <strong>${sma}</strong></div><div>Signal: <strong>${signal}</strong></div>`;
+      }); return c;
     }
 
     function createImageDemo() {
-      const container = document.createElement('div');
-      container.className = 'bg-white/5 p-4 rounded';
-      container.innerHTML = `<div class="flex gap-2 mb-3">
-    <input id="img-prompt" class="flex-1 p-2 rounded bg-white/5" placeholder="Describe the image you want..." />
-    <button id="img-gen-btn" class="px-4 py-2 bg-indigo-500 rounded">Generate</button>
-  </div>
-  <div id="img-status" class="text-sm text-gray-300 mb-2">Enter a prompt and press Generate.</div>
-  <div id="img-scroll" class="w-full bg-black/20 rounded border border-white/10 overflow-auto h-80 sm:h-96 md:h-[28rem]">
-    <img id="img-result" alt="Generated image" class="hidden block mx-auto" style="max-width:100%; height:auto;" />
-  </div>`;
-
-      // Webhook is scoped only to the image generator demo
+      const c = document.createElement('div'); c.className = 'bg-purple-100 text-gray-900 p-4 rounded';
+      c.innerHTML = `<div class="flex gap-2 mb-3">
+      <input id="img-prompt" class="flex-1 p-2 rounded bg-purple-50 text-gray-900" placeholder="Describe the image you want..." />
+      <button id="img-gen-btn" class="px-4 py-2 bg-indigo-500 rounded text-white">Generate</button>
+    </div>
+    <div id="img-status" class="text-sm text-gray-700 mb-2">Enter a prompt and press Generate.</div>
+    <div id="img-scroll" class="w-full bg-purple-200 rounded border border-gray-300 overflow-auto h-80 sm:h-96 md:h-[28rem]">
+      <img id="img-result" alt="Generated image" class="hidden block mx-auto" style="max-width:100%; height:auto;" />
+    </div>`;
       const WEBHOOK_URL = 'https://1100-346.n8n1.deltadns.xyz/webhook/90a27403-7dd6-4b6a-a72e-a0314eb9d4ee';
-
-      const promptEl = container.querySelector('#img-prompt');
-      const statusEl = container.querySelector('#img-status');
-      const imgEl = container.querySelector('#img-result');
-      const scrollEl = container.querySelector('#img-scroll');
-      const btn = container.querySelector('#img-gen-btn');
-
+      const promptEl = c.querySelector('#img-prompt'); const statusEl = c.querySelector('#img-status'); const imgEl = c.querySelector('#img-result'); const scrollEl = c.querySelector('#img-scroll'); const btn = c.querySelector('#img-gen-btn');
       btn.addEventListener('click', async () => {
         const prompt = (promptEl.value || '').trim();
         if (!prompt) { statusEl.textContent = 'Please enter a prompt.'; return; }
         statusEl.textContent = 'Generating image...';
         imgEl.classList.add('hidden');
-
-        // Cleanup previous blob URL if any
-        if (imgEl.src && imgEl.src.startsWith('blob:')) {
-          try { URL.revokeObjectURL(imgEl.src); } catch { }
-        }
-
+        if (imgEl.src && imgEl.src.startsWith('blob:')) { try { URL.revokeObjectURL(imgEl.src); } catch { } }
         btn.disabled = true; btn.classList.add('opacity-60', 'cursor-not-allowed');
-
         try {
           const controller = new AbortController();
           const timeout = setTimeout(() => controller.abort(), 60000);
-
-          const res = await fetch(WEBHOOK_URL, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ prompt, seed: Date.now() }),
-            signal: controller.signal
-          });
+          const res = await fetch(WEBHOOK_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ prompt, seed: Date.now() }), signal: controller.signal });
           clearTimeout(timeout);
-
           if (!res.ok) throw new Error('Non-200 from webhook');
-
           const ct = (res.headers.get('content-type') || '').toLowerCase();
           let finalUrl = null;
-
           if (ct.startsWith('image/')) {
-            // Direct image stream
             const blob = await res.blob();
             finalUrl = URL.createObjectURL(blob);
           } else if (ct.includes('application/json')) {
-            // JSON response - try common fields
             const data = await res.json();
             const b64 = data.base64 || data.image_base64 || data.b64_json || null;
             if (b64) {
               finalUrl = `data:image/png;base64,${b64}`;
             } else {
-              finalUrl =
-                data.image_url ||
-                data.url ||
-                (Array.isArray(data.data) && data.data[0] && (data.data[0].url || data.data[0].image_url)) ||
-                null;
+              finalUrl = data.image_url || data.url || (Array.isArray(data.data) && data.data[0] && (data.data[0].url || data.data[0].image_url)) || null;
             }
           } else {
-            // Fallback: text body containing a URL
             const text = await res.text();
             const match = text.match(/https?:\/\/\S+\.(?:png|jpg|jpeg|webp|gif)/i);
             if (match) finalUrl = match[0];
           }
-
           if (!finalUrl) throw new Error('No image URL or data in webhook response');
-
           imgEl.src = finalUrl;
           imgEl.onload = () => {
             statusEl.textContent = 'Done. Scroll if the image is large.';
@@ -385,15 +409,138 @@
           btn.disabled = false; btn.classList.remove('opacity-60', 'cursor-not-allowed');
         }
       });
-
-      return container;
+      return c;
     }
 
-    // Delegate demo-open buttons
     document.addEventListener('click', (e) => {
       const btn = e.target.closest('.demo-open-btn');
       if (btn) { const id = Number(btn.dataset.id); const p = projects.find(x => x.id === id); if (p) openModal(p); }
     });
+
+    const portfolioProjects = [
+      {
+        title: "Automated Social Media Posting Agent",
+        description: "This agent automates social media content creation and posting. It generates a post title and description from a provided topic and image URL, downloads the image from the drive, moves it to a “posted” folder, updates a sheet with the backup title, description, and status as “posted,” and finally sends an email notification upon successful completion.",
+        image: "/image/project1.png",
+        videoUrl: "https://www.youtube.com/embed/clsjaAWVDgE?si=7WAOqd7Rn_IzkGXZ"
+      },
+      {
+        title: "Scheduled Workflow Backup Agent",
+        description: "This agent automatically backs up all workflows to Google Drive at a fixed time every day. It ensures no duplicate projects are created by checking existing backups before saving, maintaining a clean and organized archive of all workflows.",
+        image: "/image/project3.png",
+        videoUrl: "https://www.youtube.com/embed/gMT0jUCL4GQ?si=tOuNHLUkXjSjIqOv"
+      },
+      {
+        title: "Resume Optimization Agent",
+        description: "This agent receives a job post and a candidate’s resume, optimizes the resume based on the job requirements to improve the candidate’s chances, and emails a detailed PDF report outlining improvement areas and suggestions.",
+        image: "/image/project2.png",
+        videoUrl: "https://www.youtube.com/embed/gMT0jUCL4GQ?si=tOuNHLUkXjSjIqOv"
+      },
+      {
+        title: "Google Maps Lead Generation Agent",
+        description: "This agent extracts leads from Google Maps, filters the data to retain only the necessary information, and stores the results in a structured sheet for easy access and management",
+        image: "/image/project4.png",
+        videoUrl: "https://www.youtube.com/embed/gMT0jUCL4GQ?si=tOuNHLUkXjSjIqOv"
+      },
+      {
+        title: "Smart AI Model (brain)Selection Agent",
+        description: "This agent automatically selects the most suitable AI model based on the input data to ensure optimal output quality while minimizing costs.",
+        image: "/image/project5.png",
+        videoUrl: "https://www.youtube.com/embed/gMT0jUCL4GQ?si=tOuNHLUkXjSjIqOv"
+      },
+      {
+        title: "Automated Invoice Generation Agent",
+        description: "This agent triggers upon receiving order details or PDFs, generates an invoice using AI, stores the invoice data in a sheet, and sends the completed invoice via email to the customer",
+        image: "/image/project6.png",
+        videoUrl: "https://www.youtube.com/embed/gMT0jUCL4GQ?si=tOuNHLUkXjSjIqOv"
+      },
+
+    ];
+
+    (function () {
+      const container = document.getElementById('projects');
+      function escapeHtml(str) {
+        const div = document.createElement('div');
+        div.textContent = String(str);
+        return div.innerHTML;
+      }
+      function renderPortfolioProjects() {
+        if (!container) return;
+        container.innerHTML = '';
+        portfolioProjects.forEach(project => {
+          const card = document.createElement('div');
+          card.classList.add('project-card');
+          const safeTitle = escapeHtml(project.title || 'Untitled');
+          const safeDesc = escapeHtml(project.description || '');
+          const safeImage = String(project.image || 'https://via.placeholder.com/600x400?text=Project');
+          const safeVideo = String(project.videoUrl || '');
+          card.innerHTML = `
+            <img src="${safeImage}" alt="${safeTitle}">
+            <div class="project-info">
+              <h3>${safeTitle}</h3>
+              <p>${safeDesc}</p>
+              <a href="#" class="view-btn" data-video="${safeVideo}">View Demo</a>
+            </div>
+          `;
+          container.appendChild(card);
+        });
+      }
+      function addPortfolioProject(input) {
+        const p = { title: String(input.title || '').trim(), description: String(input.description || '').trim(), image: input.image || '', videoUrl: input.videoUrl || '' };
+        const exists = portfolioProjects.some(x => (x.title || '').toLowerCase() === p.title.toLowerCase() && String(x.videoUrl || '') === String(p.videoUrl || ''));
+        if (!exists && p.title) { portfolioProjects.push(p); renderPortfolioProjects(); }
+      }
+      function getWebhookUrlFromConfig() {
+        const params = new URLSearchParams(location.search);
+        const q = params.get('portfolioWebhook');
+        if (q) { try { localStorage.setItem('portfolio_webhook', q); } catch { } return q; }
+        try { const stored = localStorage.getItem('portfolio_webhook'); if (stored) return stored; } catch { }
+        return null;
+      }
+      async function fetchPortfolioUpdates() {
+        const url = getWebhookUrlFromConfig();
+        if (!url) return;
+        try {
+          const res = await fetch(url, { method: 'GET', headers: { 'Accept': 'application/json' } });
+          if (!res.ok) return;
+          const ct = (res.headers.get('content-type') || '').toLowerCase();
+          if (ct.includes('application/json')) {
+            const data = await res.json();
+            if (Array.isArray(data)) { data.forEach(addPortfolioProject); }
+            else if (data && typeof data === 'object') {
+              const maybe = data.data || data.project || data.payload || data.body || data;
+              if (Array.isArray(maybe)) maybe.forEach(addPortfolioProject);
+              else addPortfolioProject(maybe);
+            }
+          } else {
+            const txt = await res.text();
+            try { const obj = JSON.parse(txt); Array.isArray(obj) ? obj.forEach(addPortfolioProject) : addPortfolioProject(obj); } catch { }
+          }
+        } catch { }
+      }
+      renderPortfolioProjects();
+      fetchPortfolioUpdates();
+      const pollParam = Number(new URLSearchParams(location.search).get('portfolioPoll') || 0);
+      if (pollParam > 0 && pollParam <= 3600) { setInterval(fetchPortfolioUpdates, pollParam * 1000); }
+    })();
+
+    (function () {
+      const popup = document.getElementById('videoPopup');
+      const videoFrame = document.getElementById('videoFrame');
+      const closeBtn = document.getElementById('closeBtn');
+      document.addEventListener('click', (e) => {
+        if (e.target.classList && e.target.classList.contains('view-btn')) {
+          e.preventDefault();
+          const videoUrl = e.target.getAttribute('data-video');
+          if (videoFrame) videoFrame.src = videoUrl;
+          if (popup) popup.style.display = 'flex';
+        }
+      });
+      if (closeBtn) {
+        closeBtn.addEventListener('click', () => { if (popup) popup.style.display = 'none'; if (videoFrame) videoFrame.src = ''; });
+      }
+      window.addEventListener('click', (e) => { if (e.target === popup) { popup.style.display = 'none'; if (videoFrame) videoFrame.src = ''; } });
+    })();
   </script>
 </body>
 
