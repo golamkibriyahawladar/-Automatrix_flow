@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Golam Kibriya | AI Automation Expert</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: #0d1117;
+      color: #e6edf3;
+      line-height: 1.6;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 1rem;
+      background: #161b22;
+      border-bottom: 2px solid #30363d;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      color: #58a6ff;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      color: #8b949e;
+    }
+
+    .projects-section {
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
+    .projects-section h2 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      color: #c9d1d9;
+    }
+
+    .projects-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .project-card {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 12px;
+      overflow: hidden;
+      transition: 0.3s;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      border-color: #58a6ff;
+    }
+
+    .project-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .project-info {
+      padding: 1rem;
+    }
+
+    .project-info h3 {
+      color: #58a6ff;
+      margin-bottom: 0.5rem;
+    }
+
+    .project-info p {
+      font-size: 0.9rem;
+      color: #8b949e;
+      margin-bottom: 1rem;
+    }
+
+    .view-btn {
+      display: inline-block;
+      background: #58a6ff;
+      color: #fff;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: 0.3s;
+    }
+
+    .view-btn:hover {
+      background: #1f6feb;
+    }
+
+    /* Video Popup */
+    .video-popup {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .video-content {
+      position: relative;
+      width: 90%;
+      max-width: 800px;
+      background: #000;
+      border-radius: 10px;
+    }
+
+    .video-content iframe {
+      width: 100%;
+      height: 450px;
+      border-radius: 10px;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      font-size: 2rem;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      border-top: 1px solid #30363d;
+      color: #8b949e;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+
+<body>
+ 
+
+  <main class="projects-section">
+    <h2>Projects</h2>
+    <div class="projects-container" id="projects"></div>
+  </main>
+
+  <!-- Popup for YouTube video -->
+  <div class="video-popup" id="videoPopup">
+    <div class="video-content">
+      <span class="close-btn" id="closeBtn">&times;</span>
+      <iframe id="videoFrame" src="" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </div>
+
+
+
+  <script>
+    // === Your Projects Data ===
+    const projects = [
+      {
+        title: "AI Workflow Builder",
+        description: "Automated business workflows using AI and n8n.",
+        image: "https://via.placeholder.com/600x400?text=AI+Workflow+Builder",
+        videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ"
+      },
+      {
+        title: "Chatbot Assistant",
+        description: "A conversational AI bot for automating client support.",
+        image: "https://via.placeholder.com/600x400?text=Chatbot+Assistant",
+        videoUrl: "https://www.youtube.com/embed/aqz-KE-bpKQ"
+      }
+    ];
+
+    // === Add Projects Dynamically ===
+    const container = document.getElementById("projects");
+    projects.forEach((project) => {
+      const card = document.createElement("div");
+      card.classList.add("project-card");
+      card.innerHTML = `
+        <img src="${project.image}" alt="${project.title}">
+        <div class="project-info">
+          <h3>${project.title}</h3>
+          <p>${project.description}</p>
+          <a href="#" class="view-btn" data-video="${project.videoUrl}">View Demo</a>
+        </div>
+      `;
+      container.appendChild(card);
+    });
+
+    // === Video Popup Logic ===
+    const popup = document.getElementById("videoPopup");
+    const videoFrame = document.getElementById("videoFrame");
+    const closeBtn = document.getElementById("closeBtn");
+
+    document.addEventListener("click", (e) => {
+      if (e.target.classList.contains("view-btn")) {
+        e.preventDefault();
+        const videoUrl = e.target.getAttribute("data-video");
+        videoFrame.src = videoUrl;
+        popup.style.display = "flex";
+      }
+    });
+
+    closeBtn.addEventListener("click", () => {
+      popup.style.display = "none";
+      videoFrame.src = "";
+    });
+
+    window.addEventListener("click", (e) => {
+      if (e.target === popup) {
+        popup.style.display = "none";
+        videoFrame.src = "";
+      }
+    });
+  </script>
+</body>
+</html>
